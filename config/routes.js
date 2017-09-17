@@ -32,9 +32,23 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  }
+  '/': {view:'Merchant/index'},
+  // 前台頁面
+  '/merchant':{view:'Merchant/index'},
+  '/market':{view:'Market/index'},
+  '/backstage':{view:'Backstage/index'},
+  // 招商公告
+  'GET /api/v1/post/:id':'DataController.postSearchOne',
+  'GET /api/v1/post':'DataController.postSearchMany',
+  'POST /api/v1/post':'DataController.postCreate',
+  'PUT /api/v1/post':'DataController.postUpdate',
+  'DELETE /api/v1/post/:id':'DataController.postDestroy',
+  // 地址資訊
+  'GET /api/v1/address/:id':'DataController.addressSearchOne',
+  'GET /api/v1/address':'DataController.addressSearchMany',
+  'POST /api/v1/address':'DataController.addressCreate',
+  'PUT /api/v1/address/:id':'DataController.addressUpdate',
+  'DELETE /api/v1/address/:id':'DataController.addressDestroy',
 
   /***************************************************************************
   *                                                                          *

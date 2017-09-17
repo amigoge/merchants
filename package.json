@@ -5,6 +5,11 @@
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "bootstrap": "^4.0.0-beta",
+    "bootstrap-vue": "^1.0.0-beta.7",
+    "css-loader": "^0.28.7",
     "ejs": "2.3.4",
     "grunt": "1.0.1",
     "grunt-contrib-clean": "1.0.0",
@@ -19,9 +24,16 @@
     "grunt-sails-linker": "~0.10.1",
     "grunt-sync": "0.5.2",
     "include-all": "^1.0.0",
+    "node-sass": "^4.5.3",
     "rc": "1.0.1",
     "sails": "^0.12.13",
-    "sails-disk": "~0.10.9"
+    "sails-disk": "~0.10.9",
+    "sails-mongo": "^0.12.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "vue-loader": "^13.0.4",
+    "vue-template-compiler": "^2.4.4",
+    "webpack": "^3.6.0"
   },
   "scripts": {
     "debug": "node debug app.js",

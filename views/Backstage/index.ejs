@@ -1,0 +1,21 @@
+<div class="content">
+  <b-jumbotron class="pt-2">
+    <b-row>
+      <b-col><b-button>新增</b-button></b-col>
+    </b-row>
+    <merchant-table :list="merchantPost" @show-detail="showDetail"></merchant-table>
+  </b-jumbotron>
+  <!-- 招商訊息detail -->
+  <b-modal id="merchantDetailModal" size="lg"
+           ref="merchantDetailModal">
+    <div slot="modal-title">
+      {{postDetail.title}}
+    </div>
+    <div>
+      <!--招商文的內容-->
+      <div class="merchantModalContent">
+        {{postDetail.content}}
+      </div>
+    </div>
+  </b-modal>
+</div>

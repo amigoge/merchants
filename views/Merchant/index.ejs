@@ -1,0 +1,18 @@
+<div class="content">
+  <b-jumbotron class="pt-2">
+    <list-post :list="merchantPost" @show-detail="showDetail"></list-post>
+  </b-jumbotron>
+  <!-- 招商訊息detail -->
+  <b-modal id="merchantDetailModal" size="lg"
+           ref="merchantDetailModal">
+    <div slot="modal-title">
+      {{postDetail.title}}
+    </div>
+    <div>
+      <!--招商文的內容-->
+      <div class="merchantModalContent">
+        {{postDetail.content}}
+      </div>
+    </div>
+  </b-modal>
+</div>
