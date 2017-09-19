@@ -1,11 +1,11 @@
 <div class="content">
   <b-jumbotron class="pt-2">
     <b-row>
-      <b-col><b-button>新增</b-button></b-col>
+      <b-col><b-button v-on:click="showCreateModal">新增</b-button></b-col>
     </b-row>
     <merchant-table :list="merchantPost" @show-detail="showDetail"></merchant-table>
   </b-jumbotron>
-  <!-- 招商訊息detail -->
+  <!-- 招商訊息detail的modal -->
   <b-modal id="merchantDetailModal" size="lg"
            ref="merchantDetailModal">
     <div slot="modal-title">
@@ -15,6 +15,25 @@
       <!--招商文的內容-->
       <div class="merchantModalContent">
         {{postDetail.content}}
+      </div>
+    </div>
+  </b-modal>
+  <!-- 新增招商訊息的modal -->
+  <b-modal id="merchantCreatModal" size="lg"
+           ref="merchantCreatModal">
+    <div slot="modal-title">
+      新增招商資訊
+    </div>
+    <div>
+      <!--招商文的內容-->
+      <div class="merchantModalContent">
+        <form>
+          <b-form-input type="text" placeholder="標題" v-model="target.title"></b-form-input>
+          <b-form-input type="text" placeholder="內文" v-model="target.content"></b-form-input>
+          <b-form-input type="text" placeholder="圖片" v-model="target.image"></b-form-input>
+          <b-form-input type="text" placeholder="時間" v-model="target.raiseTime"></b-form-input>
+          <b-form-input type="text" placeholder="地點" v-model="target.location"></b-form-input>
+        </form>
       </div>
     </div>
   </b-modal>

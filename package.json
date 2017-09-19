@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "description": "a Sails application",
   "keywords": [],
+  "keywords": [],
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -36,6 +37,7 @@
     "webpack": "^3.6.0"
   },
   "scripts": {
+    "build": "webpack -d --progress --colors",
     "debug": "node debug app.js",
     "start": "node app.js"
   },

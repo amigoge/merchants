@@ -1,10 +1,12 @@
 var webpack = require('webpack');
 
 module.exports = {
-  entry: ['./assets/js/views/Merchant/index.js'],
+  // entry: ['./assets/js/views/Merchant/index.js'],
+  entry: ['./assets/js/views/Backstage/index.js'],
   output: {
     path: __dirname,
-    filename: './assets/js/views/Merchant/bundle.js'
+    // filename: './assets/js/views/Merchant/bundle.js'
+    filename: './assets/js/views/Backstage/bundle.js'
   },
   module: {
     rules: [

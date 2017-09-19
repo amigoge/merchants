@@ -36,7 +36,12 @@ module.exports.routes = {
   // 前台頁面
   '/merchant':{view:'Merchant/index'},
   '/market':{view:'Market/index'},
-  '/backstage':{view:'Backstage/index'},
+  '/backstage':{
+    view:'Backstage/index',
+    locals:{
+      layout:'layout_backstage'
+    }
+  },
   // 招商公告
   'GET /api/v1/post/:id':'DataController.postSearchOne',
   'GET /api/v1/post':'DataController.postSearchMany',
