@@ -8,7 +8,9 @@
       </template>
       <template slot="actions" scope="row">
         <!-- We use click.stop here to prevent a 'row-clicked' event from also happening -->
-        <b-button size="sm" @click.stop="details(row.item,row.index,$event.target)">詳細資料</b-button>
+        <b-button size="sm" variant="primary" @click.stop="displayDetail(row.item,row.index,$event.target)">詳細資料</b-button>
+        <b-button size="sm" variant="warning" @click.stop="editPostDetail(row.item,row.index,$event.target)">編輯</b-button>
+        <b-button size="sm" variant="danger" @click.stop="deletePostDetail(row.item,row.index,$event.target)">刪除</b-button>
       </template>
     </b-table>
   </div>
@@ -16,7 +18,7 @@
 
 <script>
   export default{
-    props: ['list', 'showDetail'],
+    props: ['list', 'showDetail','editPost','deletePost'],
     data: function () {
       return {
         fields:{
@@ -43,12 +45,15 @@
       }
     },
     methods: {
-      displayDetail: function (postId) {
-        this.$emit('show-detail', postId);
+      displayDetail: function (item,index,target) {
+        this.$emit('show-detail', item.id);
       },
-      details:function(item,index,e){
-        console.log(item);
-      }
+      editPostDetail:function(item,index,target){
+        this.$emit('edit-post', item.id);
+      },
+      deletePostDetail:function(item,index,target){
+        this.$emit('delete-post', item.id);
+      },
     },
     watch: {
       list: function (val) {

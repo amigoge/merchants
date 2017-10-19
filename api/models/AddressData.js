@@ -12,7 +12,7 @@ module.exports = {
       type:'string'
     },
     name:{
-      type:'json'
+      type:'string'
     },
     city:{
       type:'json'

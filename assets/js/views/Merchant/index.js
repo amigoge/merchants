@@ -39,6 +39,7 @@ var app = new Vue({
         var promise = getLocation();
         promise.then(function (data) {
           app.locationData = data;
+          console.log(data);
         }, function (err) {
           console.log(err);
         })

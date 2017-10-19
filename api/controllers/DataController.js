@@ -19,7 +19,14 @@ module.exports = {
   // 搜尋多筆招商資訊
   postSearchMany:function(req,res){
     // Post.find({},{raiseTime:0, createdAt:0, updatedAt:0}).exec(function(err,posts){
-    Post.find({},{select:['location','title','status','raiseTime','updatedAt']}).exec(function(err,posts){
+    Post.find({},
+      {
+        select:
+          [
+            'location','title','status',
+            'raiseTime','updatedAt','content'
+          ]
+      }).exec(function(err,posts){
       if(err) {
         return res.json(err);
       }
@@ -66,7 +73,7 @@ module.exports = {
   // 搜尋指定一筆的地址資訊
   addressSearchOne:function(req,res){
     var targetID=req.params.id;
-    AddressData.findOne({id:targetID}).exec(function(err,address){
+    AddressData.findOne({countryId:targetID}).exec(function(err,address){
       if(err) {
         return res.json(err);
       }

@@ -32,10 +32,14 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {view:'Merchant/index'},
+  '/': {view:'Backstage/index',
+    locals:{
+      layout:'layout_backstage'
+    }
+  },
   // 前台頁面
-  '/merchant':{view:'Merchant/index'},
-  '/market':{view:'Market/index'},
+  // '/merchant':{view:'Merchant/index'},
+  // '/market':{view:'Market/index'},
   '/backstage':{
     view:'Backstage/index',
     locals:{

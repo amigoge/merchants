@@ -1,9 +1,14 @@
 <div class="content">
   <b-jumbotron class="pt-2">
     <b-row>
-      <b-col><b-button v-on:click="showCreateModal">新增</b-button></b-col>
+      <b-col><b-button variant="success" v-on:click="showCreateModal">新增</b-button></b-col>
     </b-row>
-    <merchant-table :list="merchantPost" @show-detail="showDetail"></merchant-table>
+    <!--招商資訊清單-->
+    <merchant-table :list="merchantPost"
+                    @show-detail="showDetailModal"
+                    @edit-post="showEditModal"
+                    @delete-post="showDeleteModal">
+    </merchant-table>
   </b-jumbotron>
   <!-- 招商訊息detail的modal -->
   <b-modal id="merchantDetailModal" size="lg"
@@ -28,13 +33,72 @@
       <!--招商文的內容-->
       <div class="merchantModalContent">
         <form>
-          <b-form-input type="text" placeholder="標題" v-model="target.title"></b-form-input>
-          <b-form-input type="text" placeholder="內文" v-model="target.content"></b-form-input>
-          <b-form-input type="text" placeholder="圖片" v-model="target.image"></b-form-input>
-          <b-form-input type="text" placeholder="時間" v-model="target.raiseTime"></b-form-input>
-          <b-form-input type="text" placeholder="地點" v-model="target.location"></b-form-input>
+          <b-row>
+            <b-form-input type="text" placeholder="標題" v-model="target.title"></b-form-input>
+            <b-form-input type="text" placeholder="內文" v-model="target.content"></b-form-input>
+            <!--<b-form-input type="text" placeholder="圖片" v-model="target.image"></b-form-input>-->
+            <b-form-input type="text" placeholder="時間" v-model="target.raiseTime"></b-form-input>
+            <b-col cols="6">
+              <b-form-select type="text" placeholder="城市" v-model="target.city"
+                             :options="dynamicCity" @change.native="getDistrict">
+              </b-form-select>
+            </b-col>
+            <b-col cols="6">
+              <b-form-select type="text" placeholder="區域" v-model="target.district"
+                             :options="dynamicDistrict">
+              </b-form-select>
+            </b-col>
+          </b-row>
         </form>
       </div>
+    </div>
+  </b-modal>
+  <!-- 編輯招商訊息的modal -->
+  <b-modal id="merchantEditModal" size="lg"
+           ref="merchantEditModal">
+    <div slot="modal-title">
+      編輯招商資訊
+    </div>
+    <div>
+      <!--招商文的內容-->
+      <div class="merchantModalContent">
+        <form>
+          <b-row>
+            <b-form-input type="text" placeholder="標題" v-model="target.title"></b-form-input>
+            <b-form-input type="text" placeholder="內文" v-model="target.content"></b-form-input>
+            <!--<b-form-input type="text" placeholder="圖片" v-model="target.image"></b-form-input>-->
+            <b-form-input type="text" placeholder="時間" v-model="target.raiseTime"></b-form-input>
+            <b-col cols="6">
+              <b-form-select type="text" placeholder="城市" v-model="target.city"
+                             :options="dynamicCity" @change.native="getDistrict">
+              </b-form-select>
+            </b-col>
+            <b-col cols="6">
+              <b-form-select type="text" placeholder="區域" v-model="target.district"
+                             :options="dynamicDistrict">
+              </b-form-select>
+            </b-col>
+          </b-row>
+        </form>
+      </div>
+    </div>
+  </b-modal>
+  <!-- 刪除招商訊息的modal -->
+  <b-modal id="merchantDeleteModal" size="lg"
+           ref="merchantDeleteModal">
+    <div slot="modal-title">
+      {{postDetail.title}}
+    </div>
+    <div>
+      <!--招商文的內容-->
+      <div class="merchantModalContent">
+        {{postDetail.content}}
+      </div>
+    </div>
+    <div slot="modal-footer" class="w-100">
+      <b-btn size="sm" class="float-right" variant="danger" @click="deletePost">
+        刪除
+      </b-btn>
     </div>
   </b-modal>
 </div>
